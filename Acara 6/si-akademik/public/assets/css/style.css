@@ -1,0 +1,60 @@
+body {
+    background-color: #f4f6f9;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #0b1f3a;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.content {
+    padding: 35px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+    background-color: #0b1f3a;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.menu-card {
+    background-color: #0b1f3a;
+    color: white !important;
+}
+
+.menu-card .card-title {
+    color: white;
+}
+
+.menu-card:hover {
+    background-color: #07172b;
+    color: white !important;
+}
+
+.btn-primary {
+    background-color: #0b1f3a;
+    border-color: #0b1f3a;
+}
+
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    background-color: #0b1f3a;
+    color: white;
+}
