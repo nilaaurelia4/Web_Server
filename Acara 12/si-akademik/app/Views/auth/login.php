@@ -65,21 +65,33 @@ include __DIR__ . '/../partials/header.php';
                         </div>
 
                         <div class="mb-3">
+                <label for="password" class="form-label">
+                    Password
+                </label>
 
-                            <label
-                                for="password"
-                                class="form-label">
-                                Password
-                            </label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="form-control"
+                    required
+                >
 
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                class="form-control"
-                                required>
+                <div class="form-check mt-2">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="showPassword"
+                    >
 
-                        </div>
+                    <label
+                        class="form-check-label"
+                        for="showPassword"
+                    >
+                        Tampilkan password
+                    </label>
+                </div>
+            </div>
 
                         <button
                             type="submit"
@@ -103,6 +115,14 @@ include __DIR__ . '/../partials/header.php';
 
     </div>
 </div>
+
+<script>
+document.getElementById('showPassword').addEventListener('change', function () {
+    const password = document.getElementById('password');
+
+    password.type = this.checked ? 'text' : 'password';
+});
+</script>
 
 <?php
 include __DIR__ . '/../partials/footer.php';
