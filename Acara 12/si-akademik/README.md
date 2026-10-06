@@ -1,1 +1,3 @@
-# Sistem Informasi Akademik - VERSI MAIN
+# Sistem Informasi Akademik
+
+Project Sistem Informasi Akademik dengan fitur login.
