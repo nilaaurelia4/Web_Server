@@ -58,7 +58,7 @@ $basePath = $basePath === '.'
                     </h4>
 
                     <p class="mb-0">
-                        Selamat datang di Sistem Informasi Akademik.
+                        Selamat datang di Sistem Informasi Akademik & Manajemen Data Mahasiswa.
                     </p>
 
                 </div>
