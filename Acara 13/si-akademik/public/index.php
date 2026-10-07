@@ -62,7 +62,18 @@ require_once __DIR__ .
 
 require_once __DIR__ .
     '/../app/Repositories/MahasiswaRepository.php';
+require_once __DIR__ .
+    '/../app/Repositories/ProdiRepository.php';
 
+
+/*
+|--------------------------------------------------------------------------
+| SERVICES
+|--------------------------------------------------------------------------
+*/
+
+require_once __DIR__ .
+    '/../app/Services/MahasiswaService.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +118,8 @@ use App\Core\Router;
 use App\Core\Middleware\AuthMiddleware;
 use App\Repositories\MahasiswaRepository;
 use App\Controllers\MahasiswaController;
+use App\Repositories\ProdiRepository;
+use App\Services\MahasiswaService;
 
 
 /*
@@ -132,16 +145,32 @@ $mahasiswaRepository =
         $database
     );
 
+$prodiRepository =
+    new ProdiRepository(
+        $database
+    );
+
+
+$mahasiswaService =
+    new MahasiswaService(
+        $mahasiswaRepository,
+        $prodiRepository
+    );
+
 
 $controllerFactories = [
 
     'MahasiswaController' =>
         function () use (
-            $mahasiswaRepository
+            $mahasiswaRepository,
+            $prodiRepository,
+            $mahasiswaService
         ) {
 
             return new MahasiswaController(
-                $mahasiswaRepository
+                $mahasiswaRepository,
+                $prodiRepository,
+                $mahasiswaService
             );
         },
 ];

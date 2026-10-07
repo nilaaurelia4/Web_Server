@@ -230,6 +230,41 @@ class MahasiswaRepository
         return $stmt->fetchAll();
     }
 
+    /**
+     * Mengecek apakah NIM sudah digunakan.
+     */
+    public function existsByNim(
+        string $nim,
+        ?int $excludeId = null
+    ): bool {
+
+        $sql = "
+            SELECT COUNT(*)
+            FROM mahasiswa
+            WHERE nim = :nim
+        ";
+
+        if ($excludeId !== null) {
+            $sql .= "
+                AND id != :id
+            ";
+        }
+
+        $stmt = $this->db->prepare($sql);
+
+        $params = [
+            'nim' => $nim
+        ];
+
+        if ($excludeId !== null) {
+            $params['id'] = $excludeId;
+        }
+
+        $stmt->execute($params);
+
+        return
+            (int) $stmt->fetchColumn() > 0;
+    }
 
     /**
      * Menambahkan mahasiswa.

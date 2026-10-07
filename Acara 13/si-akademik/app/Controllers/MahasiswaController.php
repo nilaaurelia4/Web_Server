@@ -3,26 +3,36 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Models\Mahasiswa;
 use App\Repositories\MahasiswaRepository;
-use InvalidArgumentException;
+use App\Repositories\ProdiRepository;
+use App\Services\MahasiswaService;
 use PDOException;
 
 class MahasiswaController extends Controller
 {
     /**
-     * Repository yang digunakan Controller.
+     * Repository dan Service yang digunakan Controller.
      */
     private MahasiswaRepository $repo;
+    private ProdiRepository $prodiRepo;
+    private MahasiswaService $service;
 
 
     /**
      * Dependency Injection.
      */
     public function __construct(
-        MahasiswaRepository $repo
+        MahasiswaRepository $repo,
+        ProdiRepository $prodiRepo,
+        MahasiswaService $service
     ) {
         $this->repo = $repo;
+
+        $this->prodiRepo =
+            $prodiRepo;
+
+        $this->service =
+            $service;
     }
 
 
@@ -119,12 +129,10 @@ class MahasiswaController extends Controller
     public function create(): void
     {
         $prodi =
-            $this->repo->getProdi();
-
+            $this->prodiRepo->all();
 
         $flash =
             $this->getFlash();
-
 
         $this->view(
             'mahasiswa/create',
@@ -144,51 +152,38 @@ class MahasiswaController extends Controller
      */
     public function store(): void
     {
-        $mahasiswa =
-            $this->validateInput();
+        $result =
+            $this->service->create(
+                $_POST
+            );
 
 
-        if ($mahasiswa === null) {
+        if ($result['success']) {
 
             $this->setFlash(
-                'Data tidak valid. Pastikan nama tidak kosong, NIM berupa angka, dan 2 angka pertama NIM sesuai tahun angkatan.',
-                'danger'
+                $result['message'],
+                'success'
             );
 
 
             $this->redirect(
-                '/mahasiswa/create'
+                '/mahasiswa'
             );
 
             return;
         }
 
 
-        try {
-
-            $this->repo->create(
-                $mahasiswa
-            );
-
-
-            $this->setFlash(
-                'Data mahasiswa berhasil ditambahkan.',
-                'success'
-            );
-
-        } catch (PDOException $e) {
-
-            $this->setFlash(
-                'Gagal menambahkan data. NIM mungkin sudah digunakan atau Prodi tidak valid.',
-                'danger'
-            );
-        }
-
-
-        $this->redirect(
-            '/mahasiswa'
+        $this->setFlash(
+            $result['message'],
+            'danger'
         );
-    }
+
+
+    $this->redirect(
+        '/mahasiswa/create'
+    );
+}
 
 
     /**
@@ -261,7 +256,7 @@ class MahasiswaController extends Controller
 
 
         $prodi =
-            $this->repo->getProdi();
+            $this->prodiRepo->all();
 
 
         $flash =
@@ -294,54 +289,17 @@ class MahasiswaController extends Controller
         $id = (int) $id;
 
 
-        $mhs =
-            $this->repo->find($id);
-
-
-        if ($mhs === null) {
-
-            http_response_code(404);
-
-            echo '<h1>
-                404 - Mahasiswa Tidak Ditemukan
-            </h1>';
-
-            return;
-        }
-
-
-        $mahasiswa =
-            $this->validateInput();
-
-
-        if ($mahasiswa === null) {
-
-            $this->setFlash(
-                'Data tidak valid. Pastikan nama tidak kosong, NIM berupa angka, dan 2 angka pertama NIM sesuai tahun angkatan.',
-                'danger'
-            );
-
-
-            $this->redirect(
-                '/mahasiswa/' .
-                $id .
-                '/edit'
-            );
-
-            return;
-        }
-
-
-        try {
-
-            $this->repo->update(
+        $result =
+            $this->service->update(
                 $id,
-                $mahasiswa
+                $_POST
             );
 
 
+        if ($result['success']) {
+
             $this->setFlash(
-                'Data mahasiswa berhasil diubah.',
+                $result['message'],
                 'success'
             );
 
@@ -350,20 +308,21 @@ class MahasiswaController extends Controller
                 '/mahasiswa'
             );
 
-        } catch (PDOException $e) {
-
-            $this->setFlash(
-                'Gagal mengubah data. NIM mungkin sudah digunakan atau Prodi tidak valid.',
-                'danger'
-            );
-
-
-            $this->redirect(
-                '/mahasiswa/' .
-                $id .
-                '/edit'
-            );
+            return;
         }
+
+
+        $this->setFlash(
+            $result['message'],
+            'danger'
+        );
+
+
+        $this->redirect(
+            '/mahasiswa/' .
+            $id .
+            '/edit'
+        );
     }
 
 
@@ -415,115 +374,5 @@ class MahasiswaController extends Controller
         $this->redirect(
             '/mahasiswa'
         );
-    }
-
-
-    /**
-     * Validasi input mahasiswa.
-     */
-    private function validateInput():
-        ?Mahasiswa
-    {
-        $nim = trim(
-            $_POST['nim'] ?? ''
-        );
-
-
-        $nama = trim(
-            $_POST['nama'] ?? ''
-        );
-
-
-        $email = trim(
-            $_POST['email'] ?? ''
-        );
-
-
-        $prodiId = (int) (
-            $_POST['prodi_id'] ?? 0
-        );
-
-
-        $angkatan = (int) (
-            $_POST['angkatan'] ?? 0
-        );
-
-
-        $status =
-            $_POST['status'] ?? 'aktif';
-
-
-        try {
-
-            $mahasiswa =
-                new Mahasiswa();
-
-
-            $mahasiswa->setNim(
-                $nim
-            );
-
-
-            $mahasiswa->setNama(
-                $nama
-            );
-
-
-            $mahasiswa->setEmail(
-                $email
-            );
-
-
-            $mahasiswa->setProdiId(
-                $prodiId
-            );
-
-
-            $mahasiswa->setAngkatan(
-                $angkatan
-            );
-
-
-            $mahasiswa->setStatus(
-                $status
-            );
-
-
-            /*
-             * Validasi dua digit awal NIM
-             * berdasarkan dua digit terakhir
-             * tahun angkatan.
-             *
-             * Contoh:
-             * Angkatan 2026
-             * NIM harus diawali 26.
-             */
-            $prefixAngkatan =
-                substr(
-                    (string)
-                    $mahasiswa->getAngkatan(),
-                    -2
-                );
-
-
-            if (
-                substr(
-                    $mahasiswa->getNim(),
-                    0,
-                    2
-                ) !== $prefixAngkatan
-            ) {
-                return null;
-            }
-
-
-            return $mahasiswa;
-
-        } catch (
-            InvalidArgumentException $e
-        ) {
-
-            return null;
-        }
     }
 }
