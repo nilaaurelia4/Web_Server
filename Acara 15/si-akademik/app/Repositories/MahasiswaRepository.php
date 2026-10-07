@@ -67,7 +67,7 @@ class MahasiswaRepository
 
 
         $sql .= "
-            ORDER BY m.id DESC
+            ORDER BY m.id ASC
             LIMIT :limit
             OFFSET :offset
         ";
