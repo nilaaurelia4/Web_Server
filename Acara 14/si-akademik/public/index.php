@@ -73,6 +73,8 @@ require_once __DIR__ .
 */
 
 require_once __DIR__ .
+    '/../app/Services/LoggerService.php';
+require_once __DIR__ .
     '/../app/Services/MahasiswaService.php';
 
 /*
@@ -120,6 +122,7 @@ use App\Repositories\MahasiswaRepository;
 use App\Controllers\MahasiswaController;
 use App\Repositories\ProdiRepository;
 use App\Services\MahasiswaService;
+use App\Services\LoggerService;
 
 
 /*
@@ -150,11 +153,13 @@ $prodiRepository =
         $database
     );
 
+$logger = new LoggerService();
 
 $mahasiswaService =
     new MahasiswaService(
         $mahasiswaRepository,
-        $prodiRepository
+        $prodiRepository,
+        $logger
     );
 
 

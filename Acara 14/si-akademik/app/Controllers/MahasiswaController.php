@@ -336,39 +336,18 @@ class MahasiswaController extends Controller
         $id = (int) $id;
 
 
-        $mhs =
-            $this->repo->find($id);
-
-
-        if ($mhs === null) {
-
-            http_response_code(404);
-
-            echo '<h1>
-                404 - Mahasiswa Tidak Ditemukan
-            </h1>';
-
-            return;
-        }
-
-
-        try {
-
-            $this->repo->delete($id);
-
-
-            $this->setFlash(
-                'Data mahasiswa berhasil dihapus.',
-                'success'
+        $result =
+            $this->service->delete(
+                $id
             );
 
-        } catch (PDOException $e) {
 
-            $this->setFlash(
-                'Data mahasiswa gagal dihapus.',
-                'danger'
-            );
-        }
+        $this->setFlash(
+            $result['message'],
+            $result['success']
+                ? 'success'
+                : 'danger'
+        );
 
 
         $this->redirect(

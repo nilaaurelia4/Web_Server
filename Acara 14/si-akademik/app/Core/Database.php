@@ -28,10 +28,47 @@ class Database
                     PDO::ATTR_EMULATE_PREPARES => false,
                 ]
             );
+
         } catch (PDOException $e) {
+
+            // Lokasi folder log
+            $logDirectory =
+                __DIR__ . '/../../storage/logs';
+
+            // Buat folder logs jika belum ada
+            if (!is_dir($logDirectory)) {
+                mkdir(
+                    $logDirectory,
+                    0777,
+                    true
+                );
+            }
+
+            // Lokasi file log
+            $logFile =
+                $logDirectory . '/app.log';
+
+            // Isi log
+            $logMessage =
+                date('Y-m-d H:i:s') .
+                ' - Database Connection Error - ' .
+                $e->getMessage() .
+                ' - File: ' .
+                $e->getFile() .
+                ' - Line: ' .
+                $e->getLine() .
+                PHP_EOL;
+
+            // Simpan ke app.log
+            file_put_contents(
+                $logFile,
+                $logMessage,
+                FILE_APPEND
+            );
+
+            // Pesan aman untuk pengguna
             die(
-                'Koneksi database gagal: ' .
-                htmlspecialchars($e->getMessage())
+                'Koneksi database gagal. Silakan coba lagi.'
             );
         }
     }
