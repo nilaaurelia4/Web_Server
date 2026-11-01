@@ -1,0 +1,1477 @@
+{
+  "info": {
+    "_postman_id": "b8a18d8b-7a3c-4623-baff-eee879faefa2",
+    "name": "API si-akademik MVC Fix",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58792020",
+    "_collection_link": "https://go.postman.co/collection/58792020-b8a18d8b-7a3c-4623-baff-eee879faefa2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Acara21",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"admin\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"rahasia123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            },
+            "description": "Controller: AuthController::register(). Mendaftarkan pengguna baru. Akses: publik (tanpa token).  \nBody JSON: username, email, password (semua wajib).  \nResponse: 201 jika berhasil, 400 jika ada field kosong, 422 jika format email tidak valid, 405 jika method bukan POST."
+          },
+          "response": [
+            {
+              "name": "Register",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"admin\",\r\n  \"email\": \"admin@example.com\",\r\n  \"password\": \"rahasia123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/register",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:01:41 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "146"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Registrasi berhasil\",\n  \"data\": {\n    \"id\": 9\n  },\n  \"timestamp\": \"2026-10-30T17:01:43+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"rahasia123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "description": "Controller: AuthController::login(). Mengautentikasi pengguna dan menghasilkan token JWT yang berlaku 5 menit. Akses: publik (tanpa token).  \nBody JSON: username dan password.  \nResponse: 200 berisi token dan role, 401 jika username atau password salah."
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"rahasia123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:08:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "304"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Login berhasil\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwicm9sZSI6InVzZXIiLCJleHAiOjE3OTMzODA0MDF9.45AIDFzlfCHBzrNY8V94uJZoh_3CaprpOSQDPCdlY_w\",\n    \"role\": \"user\"\n  },\n  \"timestamp\": \"2026-10-30T17:08:21+00:00\"\n}"
+            },
+            {
+              "name": "Login dengan PAssword Salah",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"rahasia12\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:22:37 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "137"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Username atau password salah\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:22:37+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Mahasiswa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/mahasiswa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ]
+            },
+            "description": "Controller: MahasiswaController::index(). Menampilkan seluruh data mahasiswa, atau satu mahasiswa jika memakai parameter ?id=. Akses: publik (tanpa token).  \nResponse: 200 jika berhasil, 404 jika ID tidak ditemukan."
+          },
+          "response": [
+            {
+              "name": "Get Mahasiswa",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:10:11 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1542"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diambil\",\n  \"data\": [\n    {\n      \"id\": 5,\n      \"nim\": \"260011\",\n      \"nama\": \"Shinta\",\n      \"email\": \"Shinta@gmail.com\",\n      \"prodi_id\": 1,\n      \"prodi\": \"Teknik Informatika\",\n      \"angkatan\": \"2026\",\n      \"status\": \"aktif\"\n    },\n    {\n      \"id\": 4,\n      \"nim\": \"261001\",\n      \"nama\": \"Ezra Faris\",\n      \"email\": \"ezra123@gmail.com\",\n      \"prodi_id\": 1,\n      \"prodi\": \"Teknik Informatika\",\n      \"angkatan\": \"2026\",\n      \"status\": \"aktif\"\n    },\n    {\n      \"id\": 3,\n      \"nim\": \"251004\",\n      \"nama\": \"Nila Agustin Prima Aurelia\",\n      \"email\": \"nilaaurelia97@gmail.com\",\n      \"prodi_id\": 2,\n      \"prodi\": \"Sistem Informasi\",\n      \"angkatan\": \"2025\",\n      \"status\": \"aktif\"\n    },\n    {\n      \"id\": 2,\n      \"nim\": \"242003\",\n      \"nama\": \"Citra Lestari\",\n      \"email\": \"citra@email.com\",\n      \"prodi_id\": 2,\n      \"prodi\": \"Sistem Informasi\",\n      \"angkatan\": \"2024\",\n      \"status\": \"aktif\"\n    },\n    {\n      \"id\": 1,\n      \"nim\": \"251002\",\n      \"nama\": \"Ani Wijaya\",\n      \"email\": \"aniwijaya@email.com\",\n      \"prodi_id\": 1,\n      \"prodi\": \"Teknik Informatika\",\n      \"angkatan\": \"2025\",\n      \"status\": \"aktif\"\n    }\n  ],\n  \"timestamp\": \"2026-10-30T17:10:13+00:00\"\n}"
+            },
+            {
+              "name": "Get Mahasiswa ID Tidak Ditemukan",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=111",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "111"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:23:26 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "129"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:23:26+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Tambah Mahasiswa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0ntw}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"nim\":\"250012\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenuji@gmail.com\",\"prodi_id\":1,\"angkatan\":2025,\"status\":\"aktif\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/mahasiswa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ]
+            },
+            "description": "Controller: MahasiswaController::store(). Menambah data mahasiswa baru. Akses: terproteksi, wajib header Authorization: Bearer dari endpoint login.  \nBody JSON: nim (6 digit angka), nama, email, prodi_id, angkatan, status (opsional: aktif, cuti, atau lulus).  \nResponse: 201 jika berhasil, 400 jika field belum lengkap, 401 jika token tidak ada atau tidak valid, 409 jika NIM sudah terdaftar, 422 jika validasi gagal."
+          },
+          "response": [
+            {
+              "name": "Tambah Mahasiswa",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nim\":\"250012\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenuji@gmail.com\",\"prodi_id\":1,\"angkatan\":2025,\"status\":\"aktif\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:15:45 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "155"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil ditambahkan\",\n  \"data\": {\n    \"id\": 12\n  },\n  \"timestamp\": \"2026-10-30T17:15:45+00:00\"\n}"
+            },
+            {
+              "name": "Tambah Mahasiswa tanpa Token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nim\":\"250012\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenuji@gmail.com\",\"prodi_id\":1,\"angkatan\":2025,\"status\":\"aktif\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:24:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "132"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Token tidak ditemukan\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:24:28+00:00\"\n}"
+            },
+            {
+              "name": "Tambah Mahasiswa Email Tidak Valid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nim\":\"250012\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenujigmail.com\",\"prodi_id\":1,\"angkatan\":2025,\"status\":\"aktif\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:25:29 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "197"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Validasi data gagal\",\n  \"data\": null,\n  \"errors\": {\n    \"email\": \"Format email tidak valid\"\n  },\n  \"timestamp\": \"2026-10-30T17:25:29+00:00\"\n}"
+            },
+            {
+              "name": "Tambah Mahasiswa NIM Sudah Terdaftar",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nim\":\"251002\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenuji@gmail.com\",\"prodi_id\":1,\"angkatan\":2025,\"status\":\"aktif\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:31:25 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "190"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"NIM sudah terdaftar\",\n  \"data\": null,\n  \"errors\": {\n    \"nim\": \"NIM sudah terdaftar\"\n  },\n  \"timestamp\": \"2026-10-30T17:31:25+00:00\"\n}"
+            },
+            {
+              "name": "Tambah Mahasiswa Field Kosong",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"nim\":\"2510012\",\"nama\":\"Testing dengan Token\",\"email\":\"tokenuji@gmail.com\",\"angkatan\":2025,\"status\":\"aktif\"}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:32:04 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "208"
+                },
+                {
+                  "key": "Connection",
+                  "value": "close"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Field wajib belum lengkap\",\n  \"data\": null,\n  \"errors\": {\n    \"prodi_id\": \"Field prodi_id wajib diisi\"\n  },\n  \"timestamp\": \"2026-10-30T17:32:04+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Ubah Mahasiswa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0ntw}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n        \"id\": 1,\r\n        \"nim\": \"251002\",\r\n        \"nama\": \"Ani Wijaya Ubah\",\r\n        \"email\": \"aniwijaya@email.com\",\r\n        \"prodi_id\": 1,\r\n        \"prodi\": \"Teknik Informatika\",\r\n        \"angkatan\": \"2025\",\r\n        \"status\": \"aktif\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/mahasiswa?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "description": "Controller: MahasiswaController::update(). Mengubah data mahasiswa berdasarkan parameter ?id=. Akses: terproteksi, wajib header Authorization: Bearer .  \nBody JSON: sama seperti Tambah Mahasiswa (seluruh field dikirim ulang).  \nResponse: 200 jika berhasil, 400 jika ID atau field tidak lengkap, 401 jika token tidak valid, 404 jika data tidak ditemukan, 409 jika NIM dipakai mahasiswa lain, 422 jika validasi gagal."
+          },
+          "response": [
+            {
+              "name": "Ubah Mahasiswa",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"id\": 1,\r\n        \"nim\": \"251002\",\r\n        \"nama\": \"Ani Wijaya Ubah\",\r\n        \"email\": \"aniwijaya@email.com\",\r\n        \"prodi_id\": 1,\r\n        \"prodi\": \"Teknik Informatika\",\r\n        \"angkatan\": \"2025\",\r\n        \"status\": \"aktif\"\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:18:03 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "134"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diperbarui\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:18:03+00:00\"\n}"
+            },
+            {
+              "name": "Ubah Mahasiswa ID Tidak Ditemukan",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"id\": 1,\r\n        \"nim\": \"251002\",\r\n        \"nama\": \"Ani Wijaya Ubah\",\r\n        \"email\": \"aniwijaya@email.com\",\r\n        \"prodi_id\": 1,\r\n        \"prodi\": \"Teknik Informatika\",\r\n        \"angkatan\": \"2025\",\r\n        \"status\": \"aktif\"\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=999",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "999"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:27:17 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:27:17+00:00\"\n}"
+            },
+            {
+              "name": "Ubah Mahasiswa Token Tidak Valid",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"id\": 1,\r\n        \"nim\": \"251002\",\r\n        \"nama\": \"Ani Wijaya Ubah\",\r\n        \"email\": \"aniwijaya@email.com\",\r\n        \"prodi_id\": 1,\r\n        \"prodi\": \"Teknik Informatika\",\r\n        \"angkatan\": \"2025\",\r\n        \"status\": \"aktif\"\r\n    }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=2",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "2"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:32:50 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "145"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Token tidak valid atau kedaluwarsa\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:32:50+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Hapus Mahasiswa",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0951}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/mahasiswa?id=12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "12"
+                }
+              ]
+            },
+            "description": "Controller: MahasiswaController::destroy(). Menghapus data mahasiswa berdasarkan parameter ?id=. Akses: terproteksi, wajib header Authorization: Bearer .  \nResponse: 200 jika berhasil, 400 jika ID tidak diisi, 401 jika token tidak valid, 404 jika data tidak ditemukan."
+          },
+          "response": [
+            {
+              "name": "Hapus Mahasiswa",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=12",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "12"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:20:54 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil dihapus\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:20:54+00:00\"\n}"
+            },
+            {
+              "name": "Hapus Mahasiswa ID Tidak Ditemukan",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=99",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "99"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:28:00 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "131"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:28:01+00:00\"\n}"
+            },
+            {
+              "name": "Hapus Mahasiswa Token Tidak Valid",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=13",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "13"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:33:20 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "145"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Token tidak valid atau kedaluwarsa\",\n  \"data\": null,\n  \"timestamp\": \"2026-10-30T17:33:20+00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Buku",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": [
+            {
+              "name": "Get Buku",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/buku",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "buku"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:50:55 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "302"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 3,\n      \"isbn\": \"8739020004\",\n      \"judul\": \"Dasar-dasar PHP\",\n      \"penulis\": \"Nuril\",\n      \"penerbit\": \"Gramedia\",\n      \"tahun_terbit\": \"2016\",\n      \"stok\": 5\n    },\n    {\n      \"id\": 1,\n      \"isbn\": \"9786020001\",\n      \"judul\": \"Pemrograman PHP untuk Pemula\",\n      \"penulis\": \"Budi Raharjo\",\n      \"penerbit\": \"Informatika\",\n      \"tahun_terbit\": \"2022\",\n      \"stok\": 5\n    }\n  ]\n}"
+            },
+            {
+              "name": "Get Buku ID 1",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/buku?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "buku"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:51:22 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "174"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"data\": {\n    \"id\": 1,\n    \"isbn\": \"9786020001\",\n    \"judul\": \"Pemrograman PHP untuk Pemula\",\n    \"penulis\": \"Budi Raharjo\",\n    \"penerbit\": \"Informatika\",\n    \"tahun_terbit\": \"2022\",\n    \"stok\": 5\n  }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Ubah Buku",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"isbn\": \"9761206316\",\r\n  \"judul\": \"bukutesting\",\r\n  \"penulis\": \"Wahyudi Wijaya\",\r\n  \"penerbit\": \"Gramedia\",\r\n  \"tahun_terbit\": \"2026\",\r\n  \"stok\": \"6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/buku?id=4",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buku"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "4"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Ubah Buku",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"isbn\": \"9761206316\",\r\n  \"judul\": \"bukutesting\",\r\n  \"penulis\": \"Wahyudi Wijaya\",\r\n  \"penerbit\": \"Gramedia\",\r\n  \"tahun_terbit\": \"2026\",\r\n  \"stok\": \"6\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{base_url}}/buku?id=4",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "buku"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "4"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Fri, 30 Oct 2026 17:57:41 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+                },
+                {
+                  "key": "X-Powered-By",
+                  "value": "PHP/8.1.10"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "55"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diperbarui\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tambah Buku",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"isbn\": \"9761206316\",\r\n  \"judul\": \"bukutesting\",\r\n  \"penulis\": \"Wahyudi\",\r\n  \"penerbit\": \"Gramedia\",\r\n  \"tahun_terbit\": \"2026\",\r\n  \"stok\": \"6\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/buku",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "buku"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Tambah Buku",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"isbn\": \"9761206316\",\r\n  \"judul\": \"bukutesting\",\r\n  \"penulis\": \"Wahyudi\",\r\n  \"penerbit\": \"Gramedia\",\r\n  \"tahun_terbit\": \"2026\",\r\n  \"stok\": \"6\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/buku",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "buku"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Fri, 30 Oct 2026 17:54:15 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Apache/2.4.54 (Win64) OpenSSL/1.1.1q PHP/8.1.10"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "PHP/8.1.10"
+            },
+            {
+              "key": "Content-Length",
+              "value": "72"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5, max=100"
+            },
+            {
+              "key": "Connection",
+              "value": "Keep-Alive"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil ditambahkan\",\n  \"data\": {\n    \"id\": 4\n  }\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_0ntw",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0951",
+      "secret": true
+    }
+  ]
+}
