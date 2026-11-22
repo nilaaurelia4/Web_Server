@@ -1,0 +1,16 @@
+/* Gaya bersama form_tambah.html dan form_edit.html */
+:root { --navy: #0B2A6F; --blue: #1D4ED8; --sky: #E6EEFF; --paper: #F5F8FF; --ink: #0F1B3D; --muted: #5B6B8C; --amber: #F5B301; --line: #DCE5F7; }
+body { font-family: 'Figtree', system-ui, sans-serif; color: var(--ink); background: var(--paper); min-height: 100vh; }
+h1 { font-family: 'Bricolage Grotesque', 'Figtree', sans-serif; font-weight: 700; }
+.topbar { background: var(--navy); color: #fff; padding: .8rem 0; }
+.brand-name { font-weight: 600; font-size: 1.1rem; }
+.mark { width: 22px; height: 22px; background: var(--amber); border-radius: 6px 6px 6px 0; display: inline-block; }
+.btn-kembali { border: 1.5px solid rgba(255,255,255,.4); color: #fff; border-radius: .6rem; padding: .35rem .9rem; font-weight: 500; }
+.btn-kembali:hover { background: #fff; color: var(--navy); }
+.panel-form { background: #fff; border: 1px solid var(--line); border-radius: 1rem; padding: 1.75rem; margin-bottom: 3rem; }
+.form-control, .form-select { border: 1.5px solid var(--line); border-radius: .6rem; }
+.form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 .25rem rgba(29,78,216,.15); }
+.form-control.is-invalid, .form-select.is-invalid { border-color: #dc3545; }
+.btn-biru { background: var(--navy); border: 0; color: #fff; border-radius: .7rem; font-weight: 600; padding: .55rem 1.4rem; }
+.btn-biru:hover { background: var(--blue); color: #fff; }
+.foto-preview { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); }
