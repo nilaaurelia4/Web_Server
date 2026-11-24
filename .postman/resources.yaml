@@ -1,0 +1,18 @@
+# Use this workspace to collaborate
+workspace:
+  id: ""
+
+localResources:
+  collections:
+    - ../Acara21/API si-akademik MVC Fix.postman_collection.json
+    - ../Acara23/Acara 23.postman_collection.json
+  specs:
+    - ../Acara30/docs/openapi.yaml
+    - ../Acara29/docs/openapi.yaml
+    - ../Acara23/si-akademik/docs/openapi.yaml
+    - ../Acara25/si-akademik/docs/openapi.yaml
+    - ../Acara22/si-akademik/docs/openapi.yaml
+    - ../Acara26/si-akademik/docs/openapi.yaml
+    - ../Acara27/si-akademik/docs/openapi.yaml
+    - ../Acara24/si-akademik/docs/openapi.yaml
+    - ../Acara28/si_akademik/docs/openapi.yaml
