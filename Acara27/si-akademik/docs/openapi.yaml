@@ -8,8 +8,8 @@ info:
     Authorization Bearer token (JWT HS256, masa berlaku 5 menit).
   version: 1.0.0
 servers:
-  - url: http://localhost/Web_Server/Acara22/si-akademik/public
-    description: Server lokal (XAMPP)
+  - url: http://localhost/Web_Server/Acara27/si-akademik/public
+    description: Server lokal
 
 tags:
   - name: Autentikasi

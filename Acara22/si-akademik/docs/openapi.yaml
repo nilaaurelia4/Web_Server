@@ -9,7 +9,7 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost/Web_Server/Acara22/si-akademik/public
-    description: Server lokal (XAMPP)
+    description: Server lokal (Laragon)
 
 tags:
   - name: Autentikasi
