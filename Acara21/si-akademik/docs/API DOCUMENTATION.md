@@ -2,7 +2,7 @@
 
 API RESTful untuk data mahasiswa dan autentikasi pengguna, dibangun dengan PHP Native (pola MVC, Router, Front Controller) dan database MySQL `si_akademik`.
 
-**Base URL:** `http://localhost/si-akademik/public` (sesuaikan dengan alamat project di Laragon / variabel `base_url` pada Environment Postman)
+**Base URL:** `http://localhost/Web_Server/Acara21/si-akademik/public`
 
 **Postman:** Collection `API si-akademik MVC Fix`, folder `Acara21`. Contoh request dan response pada dokumen ini diambil dari hasil pengujian di collection tersebut.
 

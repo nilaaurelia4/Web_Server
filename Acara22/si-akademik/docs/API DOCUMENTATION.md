@@ -2,7 +2,7 @@
 
 API RESTful untuk data mahasiswa dan autentikasi pengguna, dibangun dengan PHP Native (pola MVC, Router, Front Controller) dan database MySQL `si_akademik`.
 
-**Base URL:** `http://localhost/Web_Server/Acara21/si-akademik/public` 
+**Base URL:** `http://localhost/Web_Server/Acara22/si-akademik/public` 
 
 **Format response (seluruh endpoint):**
 
